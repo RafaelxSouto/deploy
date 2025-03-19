@@ -34,6 +34,8 @@ p{
 
 p:hover{
   background-color: #000000;
+  font-weight: bold; 
+  cursor: pointer;
   color: #ffffff;
 }
 
