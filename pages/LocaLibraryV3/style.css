@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo {
+    color: #2b2d42;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.container {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.construction-message h2 {
+    color: #2b2d42;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.construction-message p {
+    color: #6c757d;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.countdown-container {
+    margin: 3rem 0;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+    transition: transform 0.3s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-5px);
+}
+
+.time-box span:first-child {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ef233c;
+    margin-bottom: 0.5rem;
+}
+
+.time-box span:last-child {
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating-books {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2rem;
+    }
+    .construction-message h2 {
+        font-size: 2rem;
+    }
+    .time-box {
+        min-width: 100px;
+        padding: 1rem;
+    }
+}
