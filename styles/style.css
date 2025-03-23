@@ -1,43 +1,431 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(90deg, #05ffde 0%, #1605ff 100%);
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: #0f0c29;
+  color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  perspective: 1000px;
+}
+
+/* Efeito de partículas animadas */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(5, 255, 222, 0.1) 0%, transparent 20%),
+              radial-gradient(circle at 80% 20%, rgba(5, 255, 222, 0.05) 0%, transparent 20%);
+  animation: pulse 15s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.5; transform: scale(1); }
+}
+
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="30" y="50" font-family="Arial" font-size="30" fill="rgba(255,255,255,0.05)">📚</text></svg>');
+  opacity: 0.1;
+  z-index: -1;
+  animation: backgroundMove 60s linear infinite;
+  filter: blur(1px);
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+/* Efeito de grade cibernética */
+.cyber-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(5, 255, 222, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(5, 255, 222, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  animation: gridRotate 35s linear infinite;
+}
+
+@keyframes gridRotate {
+  0% { transform: rotateX(75deg) translateY(0); }
+  100% { transform: rotateX(75deg) translateY(50px); }
+}
+
+header {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba(5, 255, 222, 0.5);
+  letter-spacing: 2px;
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 5px rgba(5, 255, 222, 0.5); }
+  100% { text-shadow: 0 0 20px rgba(5, 255, 222, 0.8), 0 0 30px rgba(5, 255, 222, 0.6); }
+}
+
+.highlight {
+  color: #05ffde;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 10px rgba(5, 255, 222, 0.8);
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #05ffde;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+  box-shadow: 0 0 10px 2px rgba(5, 255, 222, 0.8);
+}
+
+.highlight:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 main {
-  display: flex;;
-  flex-direction: column;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  min-height: 60vh;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-button {
-  border-radius: 9px;
-  background-color: #000000;
-  color: #FFFFFF;
-  border: none;
-  padding: 10px 20px;
-  margin: 10px;
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.version-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-  background-color: #FFFFFF;
-  color: #000000;
+.version-btn:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #05ffde;
+  box-shadow: 0 15px 30px rgba(5, 255, 222, 0.3);
 }
-footer{
+
+.btn-icon {
+  font-size: 1.8rem;
+}
+
+.btn-text {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #000000;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   color: #FFFFFF;
   text-align: center;
-  padding: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  border-top: 1px solid rgba(5, 255, 222, 0.2);
+  z-index: 10;
+}
+
+.author {
+  color: #05ffde;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.author::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #05ffde;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.author:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Efeito de cursor personalizado */
+html {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2305ffde" stroke-width="2"><circle cx="12" cy="12" r="10" opacity="0.5"/><circle cx="12" cy="12" r="3"/></svg>') 12 12, auto;
+}
+
+@media (min-width: 768px) {
+  .button-container {
+    flex-direction: row;
+    max-width: 800px;
+  }
+  
+  .version-btn {
+    flex: 1;
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+  
+  .btn-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Efeito de brilho nos botões */
+.glow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0;
+  background: radial-gradient(circle at center, rgba(5, 255, 222, 0.8) 0%, transparent 70%);
+  filter: blur(15px);
+  transition: opacity 0.3s ease;
+}
+
+.version-btn:hover .glow-effect {
+  opacity: 0.5;
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Efeito de partículas flutuantes */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Efeito de neón pulsante nos botões */
+.version-btn::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, #05ffde, transparent, #05ffde);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  filter: blur(5px);
+}
+
+.version-btn:hover::after {
+  opacity: 1;
+  animation: borderRotate 2s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Efeito de texto digital */
+.digital-text {
+  position: relative;
+  display: inline-block;
+}
+
+.digital-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(5, 255, 222, 0.4);
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  animation: glitch 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  0% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 2px); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(1px, -3px); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(-1px, 3px); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(3px, 1px); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(-3px, -2px); }
+  100% { clip-path: inset(58% 0 43% 0); transform: translate(2px, 2px); }
+}
+
+/* Efeito de ondas no fundo */
+.wave-background {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(5, 255, 222, 0.05)" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-size: 100% 100%;
+  z-index: -1;
+  opacity: 0.5;
+  animation: waveMove 10s linear infinite;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Efeito de hover nos botões com escala 3D */
+.version-btn {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.version-btn:hover .btn-text {
+  transform: translateZ(20px);
+  text-shadow: 0 0 10px rgba(5, 255, 222, 0.8);
+}
+
+.version-btn:hover .btn-icon {
+  transform: translateZ(30px) scale(1.2);
+  filter: drop-shadow(0 0 15px rgba(5, 255, 222, 0.8));
+}
+
+/* Efeito de scanner */
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #05ffde, transparent);
+  animation: scan 3s linear infinite;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.version-btn:hover .scanner-line {
+  opacity: 1;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Efeito de brilho ao clicar */
+.version-btn:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 5px 15px rgba(5, 255, 222, 0.5);
+  background: rgba(5, 255, 222, 0.2);
+}
+
+/* Efeito de tipografia futurista para o título */
+h1 {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(5, 255, 222, 0.5), transparent);
+}
+
+/* Efeito de loading nos botões */
+.loading-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, #05ffde);
+  transition: width 0.3s ease;
+}
+
+.version-btn:hover .loading-effect {
+  width: 100%;
+  animation: loading 2s ease;
+}
+
+@keyframes loading {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 100%; }
 }

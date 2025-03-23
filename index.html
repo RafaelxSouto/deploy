@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Primeiro Deploy</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="background-animation"></div>
+    
     <header>
-      <h1>Versõs que crie para Loca Library</h1>
+      <h1>Versões que criei para <span class="highlight">Loca Library</span></h1>
     </header>
 
     <main>
-      <button onclick="location.href='/pages/LocaLibrary/index.html'">Versão 1</button>
-      <button onclick="location.href='/pages/LocaLibrary v2/index.html'">Versão 2</button>
-      <button onclick="location.href='/pages/LocaLibraryV3/index.html'">Versão 3</button>
+      <div class="button-container">
+        <button class="version-btn" onclick="location.href='/pages/LocaLibrary/index.html'">
+          <span class="btn-icon">📚</span>
+          <span class="btn-text">Versão 1</span>
+        </button>
+        
+        <button class="version-btn" onclick="location.href='/pages/LocaLibrary v2/index.html'">
+          <span class="btn-icon">📖</span>
+          <span class="btn-text">Versão 2</span>
+        </button>
+        
+        <button class="version-btn" onclick="location.href='/pages/LocaLibraryV3/index.html'">
+          <span class="btn-icon">📕</span>
+          <span class="btn-text">Versão 3</span>
+        </button>
+      </div>
     </main>
 
-    <footer>Desenvolvido por Rafael Souto</footer>
+    <footer>
+      <p>Desenvolvido por <span class="author">Rafael Souto</span></p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
   </body>
 </html>
